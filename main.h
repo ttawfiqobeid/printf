@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -12,12 +13,11 @@
  * struct format - converter for printf
  * @ph: type char pointer of the specifier
  * @function: function for the conversion specifier
- *
  */
 typedef struct format
 {
-	char *ph;
-	int (*function)();
+    char *ph;
+    int (*function)();
 } convert;
 
 int printf_char(va_list val);
@@ -39,4 +39,6 @@ int print_String(va_list val);
 int print_p(va_list val);
 int print_c(va_list val);
 int print_ptr(unsigned long int num);
+
 #endif
+
