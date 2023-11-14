@@ -11,6 +11,7 @@ int _strlen(char *str)
 	int j;
 
 	for (j = 0; str[j] != 0; j++)
+		;
 
 		return (j);
 }
@@ -25,5 +26,6 @@ int _strlenc(const char *str)
 	int j;
 
 	for (j = 0; str[j] != 0; j++)
+		;
 		return (j);
 }
