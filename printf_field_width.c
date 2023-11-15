@@ -8,11 +8,28 @@
  */
 int print_field_width(va_list val)
 {
-	int count = 0;
-	int width = va_arg(val, int);
+    int count = 0;
+    int width = va_arg(val, int);
 
-	/* Handle field width (implementation needed) */
+    /* Example: Print a string with field width */
+    char *content = "Hello";
+    int content_length = strlen(content);
 
-	return (count);
+    if (width > content_length) {
+        /* Pad with spaces on the left to meet the width */
+        int padding = width - content_length;
+        for (int i = 0; i < padding; i++) {
+            _putchar(' ');
+            count++;
+        }
+    }
+
+    /* Print the actual content */
+    for (int i = 0; i < content_length; i++) {
+        _putchar(content[i]);
+        count++;
+    }
+
+    return (count);
 }
 
