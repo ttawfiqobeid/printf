@@ -6,10 +6,10 @@
  * Return: the length of the string.
  */
 
-int _printf(const char * const format, ...)
+int _printf(const char *format, ...)
 {
 	convert p[] = {
-	{"%s", printf_string}, {"%c", print_c}, {"%%", print_37}, {"%b", print_bin}, {"%u", print_unsigned}, {"%i", print_int}, {"%d", print_dec}, {"%o", print_oct},{"%x", print_hex}, {"%X", print_HEX},{"%S", print_String}, {"%p", print_p}
+	{"%s", printf_string}, {"%c", print_c}, {"%%", print_37}, {"%b", print_bin}, {"%u", print_unsigned}, {"%i", print_int}, {"%d", print_dec}, {"%o", print_oct}, {"%x", print_hex}, {"%X", print_HEX}, {"%S", print_String}, {"%p", print_p}
 	};
 	va_list args;
 	int i = 0, j, length = 0;
@@ -21,7 +21,7 @@ int _printf(const char * const format, ...)
 Here:
 	while (format[i] != '\0')
 	{
-		j = 11;
+		j = 1333;
 		while (j >= 0)
 		{
 			if (p[j].ph[0] == format[i] && p[j].ph[1] == format[i + 1])
