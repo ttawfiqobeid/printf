@@ -17,7 +17,6 @@ int print_c(va_list val)
 }
 
 /******************* PRINT A STRING ************/
-#include "main.h"
 /**
  * printf_string - print a string.
  * @val: argument.
@@ -48,7 +47,6 @@ int printf_string(va_list val)
 }
 
 /****************** PERCENT SIGN *******************/
-#include "main.h"
 
 /**
  * print_37 - prints the char %.
@@ -110,7 +108,6 @@ int print_int(va_list args)
 	return (j);
 }
 
-#include "main.h"
 
 /**
  * print_dec - prints decimal
@@ -158,8 +155,6 @@ int print_dec(va_list args)
 }
 
 /******** BINARY ************************************/
-
-#include "main.h"
 
 /**
  * print_bin - prints binary number.
