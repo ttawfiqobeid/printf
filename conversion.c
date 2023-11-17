@@ -20,11 +20,13 @@ int print_pointer(va_list types, char buffer[], int flags, int width, int precis
     char map_to[] = "0123456789abcdef";
     void *addrs = va_arg(types, void *);
 
+    UNUSED(width);
     UNUSED(size);
 
     if (addrs == NULL)
         return (write(1, "(nil)", 5));
 
+    buffer[BUFF_SIZE - 1] = '\0';
     buffer[BUFF_SIZE - 1] = '\0';
 
     num_addrs = (unsigned long)addrs;
@@ -37,23 +39,24 @@ int print_pointer(va_list types, char buffer[], int flags, int width, int precis
     }
 
     /* Apply precision, limiting the number of characters printed */
-    if (precision >= 0 && precision < length - 2) /* -2 to account for '0x' */
-    {
-        length = precision + 2;
-        ind = BUFF_SIZE - length - 1; /* Adjust ind based on precision */
-    }
+    precision = (precision < 0) ? length - 2 : precision; /* Exclude '0x' from precision */
+
+    if (precision > length - 2)
+        precision = length - 2;
+
+    ind += precision;
+    length = (precision > 0) ? precision + 2 : length;
 
     if ((flags & F_ZERO) && !(flags & F_MINUS))
         padd = '0';
+
     if (flags & F_PLUS)
         extra_c = '+', length++;
     else if (flags & F_SPACE)
         extra_c = ' ', length++;
-    ind++;
 
-    /* Print the result */
-    return (write_pointer(buffer, ind, length,
-                          width, flags, padd, extra_c, padd_start));
+    /* return (write(1, &buffer[i], BUFF_SIZE - i - 1)); */
+    return write_pointer(buffer, ind, length, width, flags, padd, extra_c, padd_start);
 }
 
 /************************* PRINT NON PRINTABLE *************************/
@@ -196,7 +199,7 @@ int print_rot13string(va_list types, char buffer[], int flags, int width, int pr
  * Return: Number of chars printed.
  */
 
-int print_pointer(va_list types, char buffer[], int flags, int width, int precision, int size)
+
 {
 	char extra_c = 0, padd = ' ';
 	int ind = BUFF_SIZE - 2, length = 2, padd_start = 1; /* length=2, for '0x' */
